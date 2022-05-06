@@ -102,6 +102,7 @@ Basic commands:
     - Change the appearance of the build output
     - Define a `config` group that has maximal command line output for `bazel test`
     - If a unit test fails it should be retried for 2 times
+- Exercise 5:
   - Make all bazel commands use remote caching
     - Verify that the remote cache is used
     - How does the remote caching influence the build time?
