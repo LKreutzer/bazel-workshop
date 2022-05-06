@@ -8,7 +8,8 @@ Ideas:
     - Sandboxing
 - Reproducibility
 - Non-circularity
-- Caching
+- Caching/content digest
+- Starlark
   
 Websites:
 - Docs: https://bazel.build/
@@ -66,6 +67,7 @@ Basic commands:
 - [aquery](https://bazel.build/docs/aquery)
 
 ### (Remote) caching
+- See https://bazel.build/docs/remote-caching
 - Use e.g. [buildbuddy](https://www.buildbuddy.io/)
 
 
@@ -105,6 +107,6 @@ Basic commands:
     - How does the remote caching influence the build time?
   - Visualise the dependency graph of the project
   - Create a directory in the project that is ignored by bazel
-
+  - Calculate the test coverage
 
 TBC...
