@@ -11,6 +11,8 @@ Ideas:
 - Caching/content digest
 - Starlark
   
+  Compare bazel with other build tools like make/cmake, gradle, maven,...
+  
 Websites:
 - Docs: https://bazel.build/
 - Github: https://github.com/bazelbuild
