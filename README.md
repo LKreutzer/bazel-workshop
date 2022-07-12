@@ -1,5 +1,10 @@
 # bazel-workshop
 
+## Prerequisites
+
+Install bazel: https://bazel.build/install
+
+
 ## Bazel basics
 
 Ideas:
