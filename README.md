@@ -29,6 +29,8 @@ Websites:
 - Install bazel
 - (Use examples from docs? `git clone https://github.com/bazelbuild/examples` )
 
+- [Bazel output directory](https://bazel.build/remote/output-directories)
+
 Basic files:
 - [`BUILD.bazel`](https://bazel.build/concepts/build-files)
     - "A directory within the workspace that contains a BUILD file is a package."
