@@ -78,16 +78,105 @@ Possible limitations:
 
 ## Bazel basics
 
-## Basic bazel setup
+### Files
 
-- [Bazel output directory](https://bazel.build/remote/output-directories)
 
-Basic files:
-- [`BUILD.bazel`](https://bazel.build/concepts/build-files)
-    - "A directory within the workspace that contains a BUILD file is a package."
-- `WORKSPACE.bazel`
-  - "Identifies the directory and its contents as a Bazel workspace and lives at the root of the project's directory structure"
-- [`.bazelrc`](https://bazel.build/docs/bazelrc)
+The basic structure of the Bazel files in a repository could, for example, look like this:
+
+```bash
+.
+├── WORKSPACE.bazel
+├── .bazelrc
+├── BUILD.bazel
+├── bazel
+│   ├── bazelrcs
+│   │   ├── vm.bazelrc
+│   │   └── ...
+│   ├── external
+│   │   ├── BUILD.bazel
+│   │   ├── sentry_native.BUILD
+│   │   ├── requirements.in
+│   │   ├── requirements.txt
+│   │   └── ...
+│   ├── scripts
+│   │   ├── bazel_diff.sh
+│   │   ├── run_buildifier.sh
+│   │   └── ...
+│   ├── BUILD.bazel
+│   ├── cpp_repositories.bzl
+│   ├── go_repositories.bzl
+│   ├── python_repositories.bzl
+│   ├── python_swagger.bzl
+│   └── ...
+├── lte
+│   ├── gateway
+│   │   └── python
+│   │       ├── magma
+│   │       │   ├── mobilityd
+│   │       │   │   ├── tests
+│   │       │   │   │   └── BUILD.bazel
+│   │       │   │   └── BUILD.bazel
+│   │       │   └── policydb
+│   │       │       ├── servicers
+│   │       │       │   └── BUILD.bazel
+│   │       │       ├── tests
+│   │       │       │   └── BUILD.bazel
+│   │       │       └── BUILD.bazel
+│   │       └── BUILD.bazel
+│   ├── protos
+│   │   ├── oai
+│   │   │   └── BUILD.bazel
+│   │   └── BUILD.bazel
+│   └── swagger
+│       └── BUILD.bazel
+.
+```
+
+- [`WORKSPACE.bazel`](https://bazel.build/concepts/build-ref#workspace): Defines a Bazel project. Configuration of [Bazel rules](https://bazel.build/extending/rules) to be used in the project.
+- [`.bazelrc`](https://bazel.build/run/bazelrc): General configuration of flags for commands.
+- [`BUILD.bazel`](https://bazel.build/concepts/build-files): A file, e.g. `lte/gateway/python/magma/mobilityd/BUILD.bazel`, in which sources are defined in binaries, libraries and tests. A `BUILD.bazel` file defines a [Bazel package](https://bazel.build/concepts/build-ref#packages).
+- `bazel/`: Centralized folder for custom Bazel definitions and configuration of external sources.
+- `bazel/scripts/`: Centralized folder for Bash wrapper scripts for Bazel, e.g. for running the [Starlark formatter](#starlark-formatter), [Bazel-diff](#bazel-diff) or the [LTE integration tests](#lte-integration-tests).
+- `bazel/bazelrcs/name.bazelrc`: Configuration of flags for commands in different environments.
+- `bazel/name.bzl`
+    - Custom Bazel code - these are custom [Bazel rules](https://bazel.build/extending/rules), configuration of the tool chain and external dependencies.
+    - In `cpp`, `go` and `python_repositories.bzl`, external repositories are specified. These can be local repositories (folder in the environment) or git repositories.
+- `bazel/external/name.BUILD`: `.BUILD` files for external repositories that are not bazelified.
+
+### Starlark
+
+#### Buildifier Starlark formatter
+
+To ensure the standardized formatting of all `BUILD.bazel` and `.bzl` files the Starlark formatter [buildifier](https://github.com/bazelbuild/buildtools/tree/master/buildifier) can be used.
+
+### Caching
+
+Bazel has a very extensive and granular system of caching intermediate build outputs, artifacts and even test results. Builds that have many cache hits are much faster than builds without cache hits. The number of cache hits is reported at the end of each build, e.g. as `INFO: 4449 processes: 703 disk cache hit, 2377 internal, 1367 processwrapper-sandbox, 2 worker.`.
+
+Whenever cacheable results are produced, a local cache entry is generated in the disk cache. Some of the cache locations can be found by running `bazel info` and looking e.g. at the `repository_cache` entry.
+
+### Targets
+
+### Rules
+
+
+rules https://github.com/orgs/bazelbuild/repositories?language=&page=1&q=rules&sort=&type=all
+    cc https://github.com/bazelbuild/rules_cc
+    go https://github.com/bazelbuild/rules_go
+    python https://github.com/bazelbuild/rules_python
+    java https://github.com/bazelbuild/rules_java
+    javascript/typescript
+          https://bazelbuild.github.io/rules_nodejs/TypeScript.html
+          https://github.com/bazelbuild/rules_nodejs
+          https://github.com/bazelbuild/rules_nodejs/tree/3.x/third_party/github.com/bazelbuild/rules_typescript
+          https://github.com/bazelbuild/rules_typescript
+    ...
+    generic rules, e.g. genrule https://bazel.build/reference/be/general#genrule
+    ..library
+    ..test
+    ..binary
+
+### Commands
 
 Basic commands:
   - `bazel help`
@@ -98,7 +187,20 @@ Basic commands:
   - Buildifier/formatter
     - See https://bazel.build/rules/build-style
 
-### `bazel build`
+    help
+    info
+    build
+        phases of building
+            loading
+            analysis
+            execution
+
+        test
+          - Flaky test mechanics
+        run
+        query
+        coverage
+        options
 
 - Bazel targets
 - [build rules](https://bazel.build/concepts/build-files)
@@ -111,29 +213,55 @@ Basic commands:
 - Visibility
 - Executables
 - `bazel clean`
+   
+### Dependencies
 
-### `bazel test`
- - Command line options
- - Flaky test mechanics
+### Inputs and outputs
 
-### `bazel run`
+A note on build environments and containers...
+
+[Bazel output directory](https://bazel.build/remote/output-directories)
+
+## Advanced topics
+
+### Querying
+[`bazel query`](https://bazel.build/docs/query-how-to)
+-  Dependency graph
+- aquery
+  - [aquery](https://bazel.build/docs/aquery)
+- cquery
+
+### bazel-diff
 
 
-## Advanced bazel topics
-
-### `bazel coverage`
-- Unittest coverage data
-
-### [`bazel query`](https://bazel.build/docs/query-how-to)
-- Dependency graph
-- [aquery](https://bazel.build/docs/aquery)
-
-### (Remote) caching
+### Remote caching
 - See https://bazel.build/docs/remote-caching
-- Use e.g. [buildbuddy](https://www.buildbuddy.io/)
+- bazel-remote
+- build-buddy
+  - Use e.g. [buildbuddy](https://www.buildbuddy.io/)
+
+### CI with Bazel
+
+### Bazel Gazelle
+  - Natively supports Go and Protobuf
 
 
-## Exercises:
+### Remote execution (difficult - is there a free service?)
+
+### Custom rules
+
+Writing your own rules/extending Bazel
+  - See e.g. https://bazel.build/rules/rules-tutorial
+  - Danger zone
+    - This is where most bugs are coming from
+    - Careful to keep it efficient and safe
+
+#### Starlark tests
+
+  - https://github.com/bazelbuild/rules_testing
+
+
+## Simple example exercises:
 - Exercise 1:
   - Setup a simple project with a genrule that concatenates two files
   - Build the genrule target
