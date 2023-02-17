@@ -181,28 +181,36 @@ To ensure the standardized formatting of all `BUILD.bazel` and `.bzl` files the 
 
 Bazel has a very extensive and granular system of caching intermediate build outputs, artifacts and even test results. Builds that have many cache hits are much faster than builds without cache hits. The number of cache hits is reported at the end of each build, e.g. as `INFO: 4449 processes: 703 disk cache hit, 2377 internal, 1367 processwrapper-sandbox, 2 worker.`.
 
-Whenever cacheable results are produced, a local cache entry is generated in the disk cache. Some of the cache locations can be found by running `bazel info` and looking e.g. at the `repository_cache` entry.
+Whenever cache-able results are produced, a local cache entry is generated in the disk cache. Some of the cache locations can be found by running `bazel info` and looking e.g. at the `repository_cache` entry.
 
 ### Targets
 
-### Rules
+#### Rules
 
-
-rules https://github.com/orgs/bazelbuild/repositories?language=&page=1&q=rules&sort=&type=all
-    cc https://github.com/bazelbuild/rules_cc
-    go https://github.com/bazelbuild/rules_go
-    python https://github.com/bazelbuild/rules_python
-    java https://github.com/bazelbuild/rules_java
-    javascript/typescript
-          https://bazelbuild.github.io/rules_nodejs/TypeScript.html
-          https://github.com/bazelbuild/rules_nodejs
-          https://github.com/bazelbuild/rules_nodejs/tree/3.x/third_party/github.com/bazelbuild/rules_typescript
-          https://github.com/bazelbuild/rules_typescript
-    ...
-    generic rules, e.g. genrule https://bazel.build/reference/be/general#genrule
     ..library
     ..test
     ..binary
+
+
+- [Generic rules (genrule)](https://bazel.build/reference/be/general#genrule)
+- [List of some rule repositories](https://github.com/orgs/bazelbuild/repositories?language=&page=1&q=rules&sort=&type=all), this list is not comprehensive
+- [C/C++](https://github.com/bazelbuild/rules_cc)
+- [Go](https://github.com/bazelbuild/rules_go)
+- [Python](https://github.com/bazelbuild/rules_python)
+- [Java](https://github.com/bazelbuild/rules_java)
+  - [jvm](https://github.com/bazelbuild/rules_jvm_external) 
+- Javascript/Typescript:
+  - [nodejs (unmaintained)](https://github.com/bazelbuild/rules_nodejs)
+  - [Typescript](https://bazelbuild.github.io/rules_nodejs/TypeScript.html), [see also](https://github.com/bazelbuild/rules_nodejs/tree/3.x/third_party/github.com/bazelbuild/rules_typescript)
+  - [Typescript (moved to the above linke)](https://github.com/bazelbuild/rules_typescript)
+- [Bash](https://github.com/tweag/rules_sh)
+- [Docker](https://github.com/bazelbuild/rules_docker)
+- [Rust](https://github.com/bazelbuild/rules_docker)
+- [Apple platform](https://github.com/bazelbuild/rules_apple)
+- [Haskell](https://github.com/tweag/rules_haskell)
+- [Packages (deb, rpm, zip, ...)](https://github.com/bazelbuild/rules_pkg)
+- ... and many more.
+
 
 ### Commands
 
