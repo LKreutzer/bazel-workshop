@@ -72,7 +72,7 @@ This file contains parts derived from [1].
 
 [Bazel](https://bazel.build/about) is an open-source build system that is intended for multi-language mono-repos. Bazel is focused on fast, scalable, parallel and reproducible builds. A core strength of Bazel is an extensive [caching framework](#caching), based on a strict and fine grained build graph.
 
-Some benefits of Bazel:
+### Some benefits of Bazel:
 
   - multi-language, multi platform, extensible system
     - ideal for multilingual mono-repos
@@ -98,14 +98,15 @@ Some benefits of Bazel:
 
 See also the [intro](https://bazel.build/about/intro) and [Bazel vision](https://bazel.build/about/vision) pages.
 
-Possible limitations:
+### Possible limitations:
 
-- running services and integration tests with extended system access requirements
-- languages (yet) without rule sets
+- steep learning curve for maintainers
+- running services and integration tests, that need extended system access, goes against the philosophy of sand-boxing
+- languages that are (yet) without rule sets
 
 ## Bazel basics
 
-### Files
+### File structure
 
 
 The basic structure of the Bazel files in a repository could, for example, look like this:
@@ -161,13 +162,13 @@ The basic structure of the Bazel files in a repository could, for example, look 
 
 - [`WORKSPACE.bazel`](https://bazel.build/concepts/build-ref#workspace): Defines a Bazel project. Configuration of [Bazel rules](https://bazel.build/extending/rules) to be used in the project.
 - [`.bazelrc`](https://bazel.build/run/bazelrc): General configuration of flags for commands.
-- [`BUILD.bazel`](https://bazel.build/concepts/build-files): A file, e.g. `lte/gateway/python/magma/mobilityd/BUILD.bazel`, in which sources are defined in binaries, libraries and tests. A `BUILD.bazel` file defines a [Bazel package](https://bazel.build/concepts/build-ref#packages).
-- `bazel/`: Centralized folder for custom Bazel definitions and configuration of external sources.
-- `bazel/scripts/`: Centralized folder for Bash wrapper scripts for Bazel, e.g. for running the [Starlark formatter](#starlark-formatter), [Bazel-diff](#bazel-diff) or the [LTE integration tests](#lte-integration-tests).
+- [`BUILD.bazel`](https://bazel.build/concepts/build-files): A file, e.g. `lte/gateway/python/magma/mobilityd/BUILD.bazel`, in which sources are defined in [targets](https://bazel.build/concepts/build-ref#targets), e.g. binaries, libraries and tests. A `BUILD.bazel` file defines a [Bazel package](https://bazel.build/concepts/build-ref#packages).
+- `bazel/`: Centralized folder for custom Bazel definitions and configuration of external sources. This folder could also be called something like `tools`, this depends on the project. The same is true for all sub-folders mentioned here.
+- `bazel/scripts/`: Centralized folder for Bash wrapper scripts for Bazel, e.g. for running the [Starlark formatter](#starlark-formatter) or [Bazel-diff](#bazel-diff).
 - `bazel/bazelrcs/name.bazelrc`: Configuration of flags for commands in different environments.
 - `bazel/name.bzl`
     - Custom Bazel code - these are custom [Bazel rules](https://bazel.build/extending/rules), configuration of the tool chain and external dependencies.
-    - In `cpp`, `go` and `python_repositories.bzl`, external repositories are specified. These can be local repositories (folder in the environment) or git repositories.
+    - In this example, `cpp`, `go` and `python_repositories.bzl`, specify external repositories. These can be e.g. local repositories (folders in the environment) or git repositories.
 - `bazel/external/name.BUILD`: `.BUILD` files for external repositories that are not bazelified.
 
 ### Starlark
