@@ -48,12 +48,13 @@ This file contains parts derived from [1].
 
 ## Resources to find general information
 
-- Project website [bazel.build](https://bazel.build/).
+- Project website: [bazel.build](https://bazel.build/)
 - [Official Bazel reference](https://bazel.build/reference)
-- [`bazel help`](https://bazel.build/docs/user-manual#help) command.
-- Bazel [glossary](https://bazel.build/reference/glossary).
-- [FAQ](https://bazel.build/about/faq).
-- Source code [github.com/bazelbuild](https://github.com/bazelbuild).
+- [`bazel help`](https://bazel.build/docs/user-manual#help) command
+- Bazel [glossary](https://bazel.build/reference/glossary)
+- [FAQ](https://bazel.build/about/faq)
+- Official Bazel slack: [slack.bazel.build](https://slack.bazel.build/)
+- Source code [github.com/bazelbuild](https://github.com/bazelbuild)
 
 ## What is Bazel?
 
