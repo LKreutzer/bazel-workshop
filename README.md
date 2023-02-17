@@ -108,17 +108,13 @@ See also the [intro](https://bazel.build/about/intro) and [Bazel vision](https:/
 
 ### Starlark
 
-- [Starlark configuration language](https://github.com/bazelbuild/starlark)
-  - Deterministic, hermetic, parallelized Python dialect
+The [Starlark configuration language](https://github.com/bazelbuild/starlark) is a deterministic, hermetic and parallelizable Python dialect.
 
 #### Buildifier Starlark formatter
 
 To ensure the standardized formatting of all `BUILD.bazel` and `.bzl` files the Starlark formatter [buildifier](https://github.com/bazelbuild/buildtools/tree/master/buildifier) can be used.
 
-
-
 ### File structure
-
 
 The basic structure of the Bazel files in a repository could, for example, look like this:
 
@@ -205,42 +201,19 @@ The basic structure of the Bazel files in a repository could, for example, look 
 
 ### Commands
 
-Basic commands:
-  - `bazel help`
-  - See also:
-    -  https://bazel.build/docs/build
-    -  https://bazel.build/docs/user-manual
-    -  https://bazel.build/reference/command-line-reference
-  - Buildifier/formatter
-    - See https://bazel.build/rules/build-style
+See also:
+- list of [available commands](https://bazel.build/run/build#available-commands).
+- [build docs](https://bazel.build/docs/build)
+- [user manual](https://bazel.build/docs/user-manual)
+- [command line reference](https://bazel.build/reference/command-line-reference) 
 
-    help
-    info
-    build
-        phases of building
-            loading
-            analysis
-            execution
+The `bazel help` and `bazel info` commands can also be helpful.
 
-        test
-          - Flaky test mechanics
-        run
-        query
-        coverage
-        options
+#### [Build phases](https://bazel.build/run/build#build-phases)
 
-- Bazel targets
-- [build rules](https://bazel.build/concepts/build-files)
-    - `_binary`
-    - `_test`
-    - `_library`
-    - [`genrule`](https://bazel.build/reference/be/general)
-- Sources
-- (External) dependencies
-- Visibility
-- Executables
-- `bazel clean`
-   
+- Loading phase
+- Analysis phase
+- Execution phase
 
 ### Caching
 
