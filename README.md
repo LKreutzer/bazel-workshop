@@ -178,7 +178,18 @@ The basic structure of the Bazel files in a repository could, for example, look 
     - In this example, `cpp`, `go` and `python_repositories.bzl`, specify external repositories. These can be e.g. local repositories (folders in the environment) or git repositories.
 - `bazel/external/name.BUILD`: `.BUILD` files for external repositories that are not bazelified.
 
+### Build files
+
+- [General info](https://bazel.build/concepts/build-files)
+- [Build file style guide](https://bazel.build/build/style-guide)
+
 ### Rules
+
+There are three basic [types of rules](https://bazel.build/concepts/build-files#types-of-build-rules): `*_library`, `*_binary` and `*_test`.
+
+General infos on rules can be found in the [Bazel docs](https://bazel.build/extending/rules).
+
+Supported languages and formats are imported from:
 
 - [Generic rules (genrule)](https://bazel.build/reference/be/general#genrule)
 - [List of some rule repositories](https://github.com/orgs/bazelbuild/repositories?language=&page=1&q=rules&sort=&type=all), this list is not comprehensive
@@ -224,23 +235,31 @@ Whenever cache-able results are produced, a local cache entry is generated in th
 
 ### Dependencies
 
+- [External dependencies](https://bazel.build/external/overview)
+
 ### Inputs and outputs
 
 A note on build environments and containers...
 
-[Bazel output directory](https://bazel.build/remote/output-directories)
+- [Sand-boxing](https://bazel.build/docs/sandboxing)
+
+- [Bazel output directory](https://bazel.build/remote/output-directories)
+- The [`bazel clean`](https://bazel.build/docs/user-manual#cleaning-build-outputs) command
 
 ## Advanced topics
 
 ### Querying
-[`bazel query`](https://bazel.build/docs/query-how-to)
--  Dependency graph
-- aquery
+
+- [Dependency graph and loading phase](https://bazel.build/docs/user-manual#querying-dependency-graph)
+  - [`bazel query`](https://bazel.build/docs/query-how-to)
+- [Action graph](https://bazel.build/docs/user-manual#aquery)
   - [aquery](https://bazel.build/docs/aquery)
-- cquery
+- [cquery and analysis phase](https://bazel.build/query/cquery)
 
-### bazel-diff
+### [Tinder/bazel-diff](https://github.com/Tinder/bazel-diff)
 
+- Target diff tool
+- Only build/test what is really needed
 
 ### Remote caching
 - See https://bazel.build/docs/remote-caching
@@ -250,17 +269,25 @@ A note on build environments and containers...
 
 ### CI with Bazel
 
-### Bazel Gazelle
-  - Natively supports Go and Protobuf
+- Workflow setup
+- Combining advanced topics like remote caching, bazel-diff, ...
 
+### [Bazel Gazelle](https://github.com/bazelbuild/bazel-gazelle)
 
-### Remote execution (difficult - is there a free service?)
+- Build file generator
+- Natively supports Go and Protobuf
+
+### Remote execution
+
+- (difficult: is there a free service to try it?)
 
 ### Custom rules
 
 Writing your own rules/extending Bazel
-  - See e.g. https://bazel.build/rules/rules-tutorial
-  - Danger zone
+  - See e.g. 
+    - https://bazel.build/rules/rules-tutorial
+    - https://bazel.build/extending/rules
+  - Danger zone!
     - This is where most bugs are coming from
     - Careful to keep it efficient and safe
 
@@ -270,6 +297,11 @@ Writing your own rules/extending Bazel
 
 
 ## Simple example exercises:
+
+These examples are only suggestions - adapt to the interests and skills of the workshop participants.
+
+- Exercise 0:
+  - Write a Hello world program and bazelify it
 - Exercise 1:
   - Setup a simple project with a genrule that concatenates two files
   - Build the genrule target
@@ -307,5 +339,14 @@ Writing your own rules/extending Bazel
   - Visualise the dependency graph of the project
   - Create a directory in the project that is ignored by bazel
   - Calculate the test coverage
+- Exercise 6:
+  - Set up CI workflows for a project that cover the following aspects:
+    - Multi-lingual unit testing
+      - Use remote caching
+      - Use Bazel-diff
+      - Run all tests with language X with a different test config
+    - Building artifacts with remote caching
+      - Publish the build artifacts 
+    - Build file format checking
 
 TBC...
