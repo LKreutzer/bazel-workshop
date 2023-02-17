@@ -106,6 +106,17 @@ See also the [intro](https://bazel.build/about/intro) and [Bazel vision](https:/
 
 ## Bazel basics
 
+### Starlark
+
+- [Starlark configuration language](https://github.com/bazelbuild/starlark)
+  - Deterministic, hermetic, parallelized Python dialect
+
+#### Buildifier Starlark formatter
+
+To ensure the standardized formatting of all `BUILD.bazel` and `.bzl` files the Starlark formatter [buildifier](https://github.com/bazelbuild/buildtools/tree/master/buildifier) can be used.
+
+
+
 ### File structure
 
 
@@ -171,26 +182,7 @@ The basic structure of the Bazel files in a repository could, for example, look 
     - In this example, `cpp`, `go` and `python_repositories.bzl`, specify external repositories. These can be e.g. local repositories (folders in the environment) or git repositories.
 - `bazel/external/name.BUILD`: `.BUILD` files for external repositories that are not bazelified.
 
-### Starlark
-
-#### Buildifier Starlark formatter
-
-To ensure the standardized formatting of all `BUILD.bazel` and `.bzl` files the Starlark formatter [buildifier](https://github.com/bazelbuild/buildtools/tree/master/buildifier) can be used.
-
-### Caching
-
-Bazel has a very extensive and granular system of caching intermediate build outputs, artifacts and even test results. Builds that have many cache hits are much faster than builds without cache hits. The number of cache hits is reported at the end of each build, e.g. as `INFO: 4449 processes: 703 disk cache hit, 2377 internal, 1367 processwrapper-sandbox, 2 worker.`.
-
-Whenever cache-able results are produced, a local cache entry is generated in the disk cache. Some of the cache locations can be found by running `bazel info` and looking e.g. at the `repository_cache` entry.
-
-### Targets
-
-#### Rules
-
-    ..library
-    ..test
-    ..binary
-
+### Rules
 
 - [Generic rules (genrule)](https://bazel.build/reference/be/general#genrule)
 - [List of some rule repositories](https://github.com/orgs/bazelbuild/repositories?language=&page=1&q=rules&sort=&type=all), this list is not comprehensive
@@ -210,7 +202,6 @@ Whenever cache-able results are produced, a local cache entry is generated in th
 - [Haskell](https://github.com/tweag/rules_haskell)
 - [Packages (deb, rpm, zip, ...)](https://github.com/bazelbuild/rules_pkg)
 - ... and many more.
-
 
 ### Commands
 
@@ -250,6 +241,14 @@ Basic commands:
 - Executables
 - `bazel clean`
    
+
+### Caching
+
+Bazel has a very extensive and granular system of caching intermediate build outputs, artifacts and even test results. Builds that have many cache hits are much faster than builds without cache hits. The number of cache hits is reported at the end of each build, e.g. as `INFO: 4449 processes: 703 disk cache hit, 2377 internal, 1367 processwrapper-sandbox, 2 worker.`.
+
+Whenever cache-able results are produced, a local cache entry is generated in the disk cache. Some of the cache locations can be found by running `bazel info` and looking e.g. at the `repository_cache` entry.
+
+
 ### Dependencies
 
 ### Inputs and outputs
