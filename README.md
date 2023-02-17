@@ -44,7 +44,8 @@ This file contains parts derived from [1].
 ## Prerequisites
 
 - Install Bazel: [bazel.build/install](https://bazel.build/install)
-  - Alternatively: use a build environment, e.g. Docker container 
+  - Verify that all participants use the same version!
+  - Alternatively: use a build environment, e.g. Docker container
 - (Optional) Clone examples repository: [github.com/bazelbuild/examples](https://github.com/bazelbuild/examples)
 
 ## What do you want to learn in this workshop?
