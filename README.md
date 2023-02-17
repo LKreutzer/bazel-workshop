@@ -183,9 +183,9 @@ The basic structure of the Bazel files in a repository could, for example, look 
 - [General info](https://bazel.build/concepts/build-files)
 - [Build file style guide](https://bazel.build/build/style-guide)
 
-### Rules
+### Targets and rules
 
-There are three basic [types of rules](https://bazel.build/concepts/build-files#types-of-build-rules): `*_library`, `*_binary` and `*_test`.
+The content of the build files are [Targets](https://bazel.build/concepts/build-ref#targets). There are three basic [types of rules](https://bazel.build/concepts/build-files#types-of-build-rules): `*_library`, `*_binary` and `*_test`.
 
 General infos on rules can be found in the [Bazel docs](https://bazel.build/extending/rules).
 
@@ -212,13 +212,17 @@ Supported languages and formats are imported from:
 
 ### Commands
 
+The Bazel commands are structured around verbs like build, test or query.
+
 See also:
-- list of [available commands](https://bazel.build/run/build#available-commands).
+- complete list of [available commands](https://bazel.build/run/build#available-commands).
 - [build docs](https://bazel.build/docs/build)
+- [Specifying targets on the command line](https://bazel.build/run/build)
 - [user manual](https://bazel.build/docs/user-manual)
 - [command line reference](https://bazel.build/reference/command-line-reference) 
 
 The `bazel help` and `bazel info` commands can also be helpful.
+
 
 #### [Build phases](https://bazel.build/run/build#build-phases)
 
@@ -348,5 +352,8 @@ These examples are only suggestions - adapt to the interests and skills of the w
     - Building artifacts with remote caching
       - Publish the build artifacts 
     - Build file format checking
+- Exercise 7:
+  - Generate a dependency graph of a target
+    - Exclude external dependencies
 
 TBC...
