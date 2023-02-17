@@ -59,16 +59,29 @@ This file contains parts derived from [1].
 
 [Bazel](https://bazel.build/about) is an open-source build system that is intended for multi-language mono-repos. Bazel is focused on fast, scalable, parallel and reproducible builds. A core strength of Bazel is an extensive [caching framework](#caching) based on a strict and fine grained build graph.
 
-Reasons to use Bazel:
+Some benefits of Bazel:
 
-- "reproducible" builds
-- hermetic (sand-boxed) execution with strictly defined in- and outputs 
-- granular targets and dependencies, no circular dependencies allowed, strict visibility control
-- incremental builds
-- (remote) caching
-- parallelization and scalability, remote execution
-- free open-source project, with active community
-- multi-language, multi platform, extensible system
+  - multi-language, multi platform, extensible system
+    - ideal for multilingual mono-repos
+    - can support multiple architectures, configurations etc.
+  - free open-source project, with active community
+  - clear file and target structure
+  - reproducible builds
+  - hermetic (sand-boxed) execution with strictly defined in- and outputs
+  - build [profiling](https://bazel.build/rules/performance#performance-profiling) and metrics
+    - easy to get information, e.g. about performance bottle necks for further optimization 
+  - powerful [query language](https://bazel.build/query/quickstart) ([full query guide](https://bazel.build/query/guide))
+    - easy to analyze service architecture, create dependency graphs etc.
+  - granular targets and dependencies, no circular dependencies allowed, strict visibility control
+    - helps to avoid regression and keep services separated
+    - know which unit tests need to run for any change
+    - only build and test what is really needed
+  - incremental builds
+    - faster iteration and development
+  - [(remote) caching](https://bazel.build/remote/caching)
+    - faster builds and CI
+  - parallelization and scalability, remote execution, [distributed builds](https://bazel.build/basics/distributed-builds)
+
 
 See also the [intro](https://bazel.build/about/intro) and [Bazel vision](https://bazel.build/about/vision) pages.
 
