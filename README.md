@@ -43,8 +43,20 @@ This file contains parts derived from [1].
 
 ## Prerequisites
 
-- Install Bazel: https://bazel.build/install
-- (Optional) Clone examples repository: https://github.com/bazelbuild/examples
+- Install Bazel: [bazel.build/install](https://bazel.build/install)
+  - Alternatively: use a build environment, e.g. Docker container 
+- (Optional) Clone examples repository: [github.com/bazelbuild/examples](https://github.com/bazelbuild/examples)
+
+## What do you want to learn in this workshop?
+
+- What do you already know about Bazel?
+- More theory or more hands-on?
+- Which advanced topics are you interested in? E.g.:
+  - distributed builds (remote caching, remote execution)
+  - query language
+  - build file generator (Gazelle)
+  - bazel-diff
+  - custom Bazel rules (with unit tests)
 
 ## Resources to find general information
 
@@ -58,7 +70,7 @@ This file contains parts derived from [1].
 
 ## What is Bazel?
 
-[Bazel](https://bazel.build/about) is an open-source build system that is intended for multi-language mono-repos. Bazel is focused on fast, scalable, parallel and reproducible builds. A core strength of Bazel is an extensive [caching framework](#caching) based on a strict and fine grained build graph.
+[Bazel](https://bazel.build/about) is an open-source build system that is intended for multi-language mono-repos. Bazel is focused on fast, scalable, parallel and reproducible builds. A core strength of Bazel is an extensive [caching framework](#caching), based on a strict and fine grained build graph.
 
 Some benefits of Bazel:
 
