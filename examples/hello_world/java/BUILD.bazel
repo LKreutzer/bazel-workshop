@@ -1,3 +1,4 @@
+# BUILD file for the Java Hello world example.
 load("@rules_java//java:defs.bzl", "java_binary")
 
 java_binary(

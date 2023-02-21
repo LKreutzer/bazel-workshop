@@ -1,3 +1,4 @@
+// This is the C++ 'Hello world' example.
 #include <iostream>
 
 int main() {
