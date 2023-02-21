@@ -1,0 +1,4 @@
+examples/** linguist-documentation=false
+examples/** linguist-detectable
+**/README.md linguist-documentation=false
+**/*.md linguist-detectable
