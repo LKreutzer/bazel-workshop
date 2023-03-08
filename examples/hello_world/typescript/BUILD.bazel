@@ -1,0 +1,12 @@
+# BUILD file for the TypeScript Hello world example.
+load("@aspect_rules_ts//ts:defs.bzl", "ts_project")
+
+ts_project(
+    name = "hello_world",
+    srcs = ["hello_world.ts"],
+    tsconfig = {
+        "compilerOptions": {
+            "declaration": True,
+        }
+    },
+)

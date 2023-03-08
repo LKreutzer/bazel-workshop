@@ -18,3 +18,32 @@ rules_rust_dependencies()
 rust_register_toolchains(edition = "2021")
 
 # END OF RUST TOOLCHAIN
+
+# TS TOOLCHAIN
+
+load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+http_archive(
+    name = "aspect_rules_ts",
+    sha256 = "b02f64b151caf866787ec9615340fa5de0a7857392b8aeb0fc6473d9076a21f6",
+    strip_prefix = "rules_ts-1.2.2",
+    url = "https://github.com/aspect-build/rules_ts/releases/download/v1.2.2/rules_ts-v1.2.2.tar.gz",
+)
+
+load("@aspect_rules_ts//ts:repositories.bzl", "rules_ts_dependencies", "LATEST_VERSION")
+
+rules_ts_dependencies(ts_version = LATEST_VERSION)
+
+load("@rules_nodejs//nodejs:repositories.bzl", "DEFAULT_NODE_VERSION", "nodejs_register_toolchains")
+
+nodejs_register_toolchains(
+    name = "node",
+    node_version = DEFAULT_NODE_VERSION,
+)
+
+load("@aspect_bazel_lib//lib:repositories.bzl", "register_copy_directory_toolchains", "register_copy_to_directory_toolchains")
+
+register_copy_directory_toolchains()
+
+register_copy_to_directory_toolchains()
+
+# END OF TS TOOLCHAIN

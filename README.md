@@ -1,6 +1,6 @@
 :warning: These notes are still a work in progress.
 
-<!-- 
+<!--
 
 This file contains parts derived from [1].
 
@@ -83,7 +83,7 @@ This file contains parts derived from [1].
   - reproducible builds
   - hermetic (sand-boxed) execution with strictly defined in- and outputs
   - build [profiling](https://bazel.build/rules/performance#performance-profiling) and metrics
-    - easy to get information, e.g. about performance bottle necks for further optimization 
+    - easy to get information, e.g. about performance bottle necks for further optimization
   - powerful [query language](https://bazel.build/query/quickstart) ([full query guide](https://bazel.build/query/guide))
     - easy to analyze service architecture, create dependency graphs etc.
   - granular targets and dependencies, no circular dependencies allowed, strict visibility control
@@ -198,11 +198,12 @@ Supported languages and formats are imported from:
 - [Go](https://github.com/bazelbuild/rules_go)
 - [Python](https://github.com/bazelbuild/rules_python)
 - [Java](https://github.com/bazelbuild/rules_java)
-  - [jvm](https://github.com/bazelbuild/rules_jvm_external) 
+  - [jvm](https://github.com/bazelbuild/rules_jvm_external)
 - Javascript/Typescript:
+  - [rules_ts](https://github.com/aspect-build/rules_ts)
   - [nodejs (unmaintained)](https://github.com/bazelbuild/rules_nodejs)
-  - [Typescript](https://bazelbuild.github.io/rules_nodejs/TypeScript.html), [see also](https://github.com/bazelbuild/rules_nodejs/tree/3.x/third_party/github.com/bazelbuild/rules_typescript)
-  - [Typescript (moved to the above linke)](https://github.com/bazelbuild/rules_typescript)
+  - [rules_typescript](https://bazelbuild.github.io/rules_nodejs/TypeScript.html), [see also this subfolder](https://github.com/bazelbuild/rules_nodejs/tree/3.x/third_party/github.com/bazelbuild/rules_typescript)
+  - [Typescript (moved to the above link)](https://github.com/bazelbuild/rules_typescript)
 - [Bash](https://github.com/tweag/rules_sh)
 - [Docker](https://github.com/bazelbuild/rules_docker)
 - [Rust](https://github.com/bazelbuild/rules_docker)
@@ -220,7 +221,7 @@ See also:
 - [build docs](https://bazel.build/docs/build)
 - [Specifying targets on the command line](https://bazel.build/run/build)
 - [user manual](https://bazel.build/docs/user-manual)
-- [command line reference](https://bazel.build/reference/command-line-reference) 
+- [command line reference](https://bazel.build/reference/command-line-reference)
 
 The `bazel help` and `bazel info` commands can also be helpful.
 
@@ -289,7 +290,7 @@ A note on build environments and containers...
 ### Custom rules
 
 Writing your own rules/extending Bazel
-  - See e.g. 
+  - See e.g.
     - https://bazel.build/rules/rules-tutorial
     - https://bazel.build/extending/rules
   - Danger zone!
