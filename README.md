@@ -44,6 +44,12 @@ This file contains parts derived from [1].
 ## Prerequisites
 
 - Install Bazel: [bazel.build/install](https://bazel.build/install)
+  - Recommended method via Bazelisk:
+    - `cd /usr/sbin`
+    - `wget --progress=dot:giga https://github.com/bazelbuild/bazelisk/releases/download/v1.10.0/bazelisk-linux-amd64`
+    - `chmod +x bazelisk-linux-amd64`
+    - `ln -s /usr/sbin/bazelisk-linux-amd64 /usr/sbin/bazel`
+    - Use a `.bazelversion` file to set the Bazel version for each repository.
   - Verify that all participants use the same version!
   - Alternatively: use a build environment, e.g. Docker container
 - (Optional) Clone examples repository: [github.com/bazelbuild/examples](https://github.com/bazelbuild/examples)
@@ -266,12 +272,13 @@ A note on build environments and containers...
 
 - Target diff tool
 - Only build/test what is really needed
+- Use a wrapper script, e.g. [like this](https://github.com/magma/magma/blob/e1a45b343131b3853cb10d4470f5628b03b2785e/bazel/scripts/bazel_diff.sh).
 
 ### Remote caching
 - See https://bazel.build/docs/remote-caching
-- bazel-remote
-- build-buddy
-  - Use e.g. [buildbuddy](https://www.buildbuddy.io/)
+  - Use e.g. Google Cloud Platform
+- [buchgr/bazel-remote](https://github.com/buchgr/bazel-remote)
+- Managed remote caching services, e.g. [buildbuddy](https://www.buildbuddy.io/)
 
 ### CI with Bazel
 
