@@ -41,6 +41,8 @@ This file contains parts derived from [1].
 
 # bazel-workshop
 
+![bazel](https://github.com/LKreutzer/bazel-workshop/blob/main/media/2024-08-16-readme.gif)
+
 ## Prerequisites
 
 - Install Bazel: [bazel.build/install](https://bazel.build/install)
